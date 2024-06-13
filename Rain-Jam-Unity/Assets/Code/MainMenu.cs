@@ -22,6 +22,6 @@ public class MainMenu : MonoBehaviour
 
     void HandleStartButtonClicked()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 }
