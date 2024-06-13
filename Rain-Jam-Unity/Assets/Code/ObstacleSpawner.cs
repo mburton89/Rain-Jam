@@ -4,54 +4,50 @@ using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-    //Variables
-    public int timeEnd;
-    public int randSpawnMin = 1;
-    public int randSpawnMax = 10;
-    public GameObject platform;
-    public Rigidbody2D rg2D;
+
+    public GameObject[] obj;
+    public float spawnMin = 1f;
+    public float spawnMax = 2f;
+    public Vector3 pos = new Vector3(-4, 0, 0);
+    public float size = 1.0f;
+    private Vector3 dir = Vector3.right;
+
+    public GameObject[] endPoint;
+
 
     public Transform target; // the target position
-    
-
-
-
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float speed; // speed - units per second (gives you control of how fast the object will move in the inspector)
+    public bool moveObj; // a public bool that allows you to toggle this script on and off in the inspector
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.deltaTime < timeEnd)
+        if (moveObj == true)
         {
-            ObstacleSpawn();
+            float step = speed * Time.deltaTime; // step size = speed * frame time
+            transform.position = Vector3.MoveTowards(transform.position, target.position, step); // moves position a step closer to the target position
         }
-       
-        
+
     }
 
-    public void ObstacleSpawn()
+
+    void Start()
     {
-        
-  
-            int platformNumberSpwaned =  Random.Range(randSpawnMin, randSpawnMax);
-            for(int i = 0; i < platformNumberSpwaned; i++)
-            {
-                Instantiate(platform);
-            }
-           if (Time.time == 0 && platform.transform.position == target.position)
-            {
-                for(int i = 0;i < platformNumberSpwaned; i++)
-                {
-                    Destroy(platform);
-                }
-            }
+        StartCoroutine(Spawn());
     }
+
+    IEnumerator Spawn()
+    {
+        while (true)
+        {
+            Instantiate(obj[Random.Range(0, obj.Length)], pos, Quaternion.identity);
+            pos += dir * size;
+            yield return new WaitForSeconds(Random.Range(spawnMin, spawnMax));
+                Destroy(target);
+        }
+    }
+
+   
 
 
 }
