@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98dc88bdeb6d29d4682a98faaf2ca0c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  splashParticlePrefab: {fileID: 1533821425023431499, guid: e5cbae7e445b10a4d89656d771de0a1c, type: 3}
 --- !u!50 &5417129151735417640
 Rigidbody2D:
   serializedVersion: 4

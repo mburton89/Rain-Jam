@@ -8,6 +8,8 @@ public class WaterDrop : MonoBehaviour
     private Vector3 screenBounds;
     private float objectWidth;
 
+    public GameObject splashParticlePrefab;
+
     void Start()
     {
         mainCamera = Camera.main;
@@ -32,9 +34,11 @@ public class WaterDrop : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Flower>())
         {
+            collision.gameObject.GetComponent<Flower>().Grow(); 
             GameManager.Instance.AddPoint();
         }
         WaterSpawner.Instance.SpawnWaterDrop();
+        Instantiate(splashParticlePrefab, transform.position, transform.rotation, null);
         Destroy(gameObject);
     }
 }
