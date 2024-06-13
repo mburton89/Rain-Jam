@@ -250,7 +250,7 @@ MonoBehaviour:
   spawnMin: 1
   spawnMax: 5
   pos: {x: -4, y: 0, z: 0}
-  size: 1
+  size: 2
   endPoint:
   - {fileID: 1022695665}
   target: {fileID: 2738790073100261278, guid: a0c03606ba2e97f459b56ad8c9cec7ca, type: 3}
