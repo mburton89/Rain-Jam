@@ -46,6 +46,7 @@ public class WaterDrop : MonoBehaviour
         }
         WaterSpawner.Instance.SpawnWaterDrop();
         Instantiate(splashParticlePrefab, transform.position, transform.rotation, null);
+        SoundManager.Instance.PlayWaterDropSound();
         Destroy(gameObject);
     }
 }

@@ -23,6 +23,9 @@ public class WaterSpawner : MonoBehaviour
     public void SpawnWaterDrop()
     {
         if (!canSpawnWater || hasSpawnedWater) return;
+
+        StartCoroutine(SpawnWaterBuffer());
+
         Instantiate(waterDropPrefab, waterSpawnPoint.position, transform.rotation, transform);
     }
 
