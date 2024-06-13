@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class Flower : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float growthRate;
 
-    // Update is called once per frame
-    void Update()
+    public void Grow()
     {
-        
+        transform.localScale += new Vector3(growthRate, growthRate);
     }
 }

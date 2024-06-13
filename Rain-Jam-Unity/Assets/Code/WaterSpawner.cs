@@ -10,13 +10,16 @@ public class WaterSpawner : MonoBehaviour
 
     public Transform waterSpawnPoint;
 
+    [HideInInspector] public bool canSpawnWater;
     private void Awake()
     {
         Instance = this;
+        canSpawnWater = true;
     }
 
     public void SpawnWaterDrop()
-    { 
+    {
+        if (!canSpawnWater) return;
         Instantiate(waterDropPrefab, waterSpawnPoint.position, transform.rotation, transform);
     }
 
