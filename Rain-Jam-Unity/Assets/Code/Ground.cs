@@ -2,16 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class Ground : MonoBehaviour
 {
-    public static GameManager Instance;
-
-    int points;
-    private void Awake()
-    {
-        Instance = this;
-    }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -22,10 +14,5 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
-    }
-
-    public void AddPoint()
-    { 
-        points++;
     }
 }

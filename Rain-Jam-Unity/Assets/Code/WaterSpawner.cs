@@ -6,10 +6,20 @@ public class WaterSpawner : MonoBehaviour
 {
     public static WaterSpawner Instance;
 
+    public GameObject waterDropPrefab;
+
+    public Transform waterSpawnPoint;
+
     private void Awake()
     {
         Instance = this;
     }
+
+    public void SpawnWaterDrop()
+    { 
+        Instantiate(waterDropPrefab, waterSpawnPoint.position, transform.rotation, transform);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
