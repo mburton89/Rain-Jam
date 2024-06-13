@@ -8,7 +8,7 @@ using TMPro;
 public class MainMenu : MonoBehaviour
 {
     public Button startButton;
-    //public TextMeshProUGUI highestWaveText;
+    public TextMeshProUGUI Score;
 
 
 
@@ -16,8 +16,8 @@ public class MainMenu : MonoBehaviour
     {
         startButton.onClick.AddListener(HandleStartButtonClicked);
 
-       /* int highestWave = PlayerPrefs.GetInt("highestWave");
-        highestWaveText.SetText("Highest Wave: " + highestWave);*/
+        int highestScore = GameObject.Find("GameManager").GetComponent<GameManager>().points;//GameManager.GetInt.points;
+        Score.SetText("High Score: " + highestScore);
     }
 
     void HandleStartButtonClicked()
