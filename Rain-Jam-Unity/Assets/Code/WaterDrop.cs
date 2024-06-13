@@ -10,11 +10,17 @@ public class WaterDrop : MonoBehaviour
 
     public GameObject splashParticlePrefab;
 
+    public List<GameObject> characters;
+
     void Start()
     {
         mainCamera = Camera.main;
         screenBounds = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, mainCamera.transform.position.z));
         objectWidth = GetComponent<SpriteRenderer>().bounds.extents.x; // Assuming the object has a SpriteRenderer
+
+        int rand = Random.Range(0, characters.Count);
+
+        characters[rand].gameObject.SetActive(true);
     }
 
     void Update()
