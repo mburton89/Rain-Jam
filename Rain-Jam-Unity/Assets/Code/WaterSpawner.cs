@@ -11,6 +11,9 @@ public class WaterSpawner : MonoBehaviour
     public Transform waterSpawnPoint;
 
     [HideInInspector] public bool canSpawnWater;
+
+    bool hasSpawnedWater;
+
     private void Awake()
     {
         Instance = this;
@@ -19,19 +22,14 @@ public class WaterSpawner : MonoBehaviour
 
     public void SpawnWaterDrop()
     {
-        if (!canSpawnWater) return;
+        if (!canSpawnWater || hasSpawnedWater) return;
         Instantiate(waterDropPrefab, waterSpawnPoint.position, transform.rotation, transform);
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private IEnumerator SpawnWaterBuffer()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        hasSpawnedWater = true;
+        yield return new WaitForSeconds(0.5f);
+        hasSpawnedWater = false;
     }
 }

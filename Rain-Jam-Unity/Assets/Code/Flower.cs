@@ -8,6 +8,6 @@ public class Flower : MonoBehaviour
 
     public void Grow()
     {
-        transform.localScale += new Vector3(growthRate, growthRate);
+        transform.localPosition += new Vector3(0, growthRate);
     }
 }
