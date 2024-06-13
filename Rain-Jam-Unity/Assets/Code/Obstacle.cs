@@ -9,5 +9,6 @@ public class Obstacle : MonoBehaviour
     public void Init(int xDirection, float xSpeed)
     {
         rb.AddForce(new Vector3(xDirection, 0, 0) * xSpeed);
+        Destroy(gameObject, 5);
     }
 }
