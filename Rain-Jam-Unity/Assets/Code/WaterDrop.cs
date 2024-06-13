@@ -19,12 +19,22 @@ public class WaterDrop : MonoBehaviour
     {
         // Calculate the new position based on mouse movement
         float mouseXDelta = Input.GetAxis("Mouse X");
-        Vector3 newPosition = transform.position + new Vector3(mouseXDelta, 0, 0);
+        Vector3 newPosition = transform.position + new Vector3(mouseXDelta / 2, 0, 0);
 
         // Clamp the new position to keep the object within screen boundaries
         newPosition.x = Mathf.Clamp(newPosition.x, screenBounds.x * -1 + objectWidth, screenBounds.x - objectWidth);
 
         // Apply the new position
         transform.position = newPosition;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<Flower>())
+        {
+            GameManager.Instance.AddPoint();
+        }
+        WaterSpawner.Instance.SpawnWaterDrop();
+        Destroy(gameObject);
     }
 }
