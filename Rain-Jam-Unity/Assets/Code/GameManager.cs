@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    int points;
+    public int points;
     private void Awake()
     {
         Instance = this;
