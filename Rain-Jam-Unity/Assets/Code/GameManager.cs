@@ -31,6 +31,12 @@ public class GameManager : MonoBehaviour
     public void AddPoint()
     { 
         points++;
+
+        if (points > PlayerPrefs.GetInt("HighScore"))
+        {
+            PlayerPrefs.SetInt("HighScore", points);
+        }
+
         HUD.instance.UpdatePointsUI(points);
     }
 

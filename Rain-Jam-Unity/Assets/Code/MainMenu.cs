@@ -16,7 +16,7 @@ public class MainMenu : MonoBehaviour
     {
         startButton.onClick.AddListener(HandleStartButtonClicked);
 
-        int highestScore = GameObject.Find("GameManager").GetComponent<GameManager>().points;//GameManager.GetInt.points;
+        int highestScore = PlayerPrefs.GetInt("HighScore");
         Score.SetText("High Score: " + highestScore);
     }
 

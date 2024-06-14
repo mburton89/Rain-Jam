@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8448373372234744650}
   - component: {fileID: 5800079045929864198}
   - component: {fileID: 134583353371545658}
+  - component: {fileID: 3949980962884198050}
   m_Layer: 0
   m_Name: Obstacle - Frisbee
   m_TagString: Untagged
@@ -172,3 +173,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 8448373372234744650}
+--- !u!114 &3949980962884198050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7428926397459437112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41c247887d2e4e44a8f5cfbd5d7e1f7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 8644172171510000218}
+  sprites:
+  - {fileID: 182939925, guid: e4e5c630d56755542bc341b107777aa9, type: 3}
+  - {fileID: 1502621323, guid: e4e5c630d56755542bc341b107777aa9, type: 3}
+  - {fileID: 1207863631, guid: e4e5c630d56755542bc341b107777aa9, type: 3}
+  - {fileID: -445571050, guid: e4e5c630d56755542bc341b107777aa9, type: 3}
+  - {fileID: -1607023180, guid: e4e5c630d56755542bc341b107777aa9, type: 3}
+  - {fileID: 2106095186, guid: e4e5c630d56755542bc341b107777aa9, type: 3}
+  secondsBetweenFrames: 0.15
