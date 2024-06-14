@@ -17,6 +17,11 @@ public class WaterDrop : MonoBehaviour
 
     public bool isToxic;
 
+    private Vector3 lastTouchPosition;
+    private bool isTouching = false;
+
+    bool isDesktop;
+
     void Start()
     {
         mainCamera = Camera.main;
@@ -26,22 +31,59 @@ public class WaterDrop : MonoBehaviour
         int rand = Random.Range(0, characters.Count);
 
         characters[rand].gameObject.SetActive(true);
+
+        float width = Screen.width;
+        float height = Screen.height;
+
+        if (width > height)
+        {
+            isDesktop = true;
+        }
     }
 
     void Update()
     {
+        float moveAmount = 0;
+
         // Handle mouse movement
-        float mouseXDelta = Input.GetAxis("Mouse X");
+        if (Input.GetMouseButton(0) && isDesktop)
+        {
+            float mouseXDelta = Input.GetAxis("Mouse X");
+            moveAmount += mouseXDelta / 2;
+        }
+
+        // Handle touch movement
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+
+            if (touch.phase == TouchPhase.Began)
+            {
+                lastTouchPosition = mainCamera.ScreenToWorldPoint(touch.position);
+                isTouching = true;
+            }
+            else if (touch.phase == TouchPhase.Moved && isTouching)
+            {
+                Vector3 currentTouchPosition = mainCamera.ScreenToWorldPoint(touch.position);
+                float touchXDelta = currentTouchPosition.x - lastTouchPosition.x;
+                moveAmount += touchXDelta;
+                lastTouchPosition = currentTouchPosition;
+            }
+            else if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
+            {
+                isTouching = false;
+            }
+        }
 
         // Handle arrow key movement
         float moveInput = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+        moveAmount += moveInput;
 
         // Combine movements
-        float moveAmount = (mouseXDelta / 2) + moveInput;
         Vector3 newPosition = transform.position + new Vector3(moveAmount, 0, 0);
 
         // Clamp the new position to keep the object within screen boundaries
-        newPosition.x = Mathf.Clamp(newPosition.x, screenBounds.x * -1 + objectWidth, screenBounds.x - objectWidth);
+        //newPosition.x = Mathf.Clamp(newPosition.x, screenBounds.x * -1 + objectWidth, screenBounds.x - objectWidth);
 
         // Apply the new position
         transform.position = newPosition;
