@@ -8114,6 +8114,7 @@ MonoBehaviour:
   - {fileID: 7721567237066497842, guid: 4728cbfc09405be44bdcb56fbc1599da, type: 3}
   - {fileID: 7721567237066497842, guid: 4728cbfc09405be44bdcb56fbc1599da, type: 3}
   - {fileID: 7721567237066497842, guid: da96fe3e77eafae4ea459db95e0d7c66, type: 3}
+  - {fileID: 3147159769284974061, guid: 7b42cda2c18e2b44c90526828e43b111, type: 3}
   parent: {fileID: 1328011753}
   obstacleForce: 122
   xDirection: 1
@@ -9468,6 +9469,9 @@ MonoBehaviour:
   - {fileID: 3147159769284974061, guid: 59c309d3b5f5ea84b852638a5848c53b, type: 3}
   - {fileID: 3685861856024293336, guid: 232e53545e9d71b48831c0735a4203ed, type: 3}
   - {fileID: 7721567237066497842, guid: da96fe3e77eafae4ea459db95e0d7c66, type: 3}
+  - {fileID: 3147159769284974061, guid: 30814a6cb4c17554cb4f849a38b374d4, type: 3}
+  - {fileID: 7428926397459437112, guid: fec2706756c4ae347bf1778c324682b6, type: 3}
+  - {fileID: 7428926397459437112, guid: 10f18ae9faf0bec49a92feac67e6c70f, type: 3}
   parent: {fileID: 1774500573}
   obstacleForce: 122
   xDirection: -1
