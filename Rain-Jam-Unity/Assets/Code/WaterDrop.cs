@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WaterDrop : MonoBehaviour
@@ -11,6 +12,10 @@ public class WaterDrop : MonoBehaviour
     public GameObject splashParticlePrefab;
 
     public List<GameObject> characters;
+
+    public float speed = 25.0f; // Speed of movement with arrow keys
+
+    public bool isToxic;
 
     void Start()
     {
@@ -25,9 +30,15 @@ public class WaterDrop : MonoBehaviour
 
     void Update()
     {
-        // Calculate the new position based on mouse movement
+        // Handle mouse movement
         float mouseXDelta = Input.GetAxis("Mouse X");
-        Vector3 newPosition = transform.position + new Vector3(mouseXDelta / 2, 0, 0);
+
+        // Handle arrow key movement
+        float moveInput = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+
+        // Combine movements
+        float moveAmount = (mouseXDelta / 2) + moveInput;
+        Vector3 newPosition = transform.position + new Vector3(moveAmount, 0, 0);
 
         // Clamp the new position to keep the object within screen boundaries
         newPosition.x = Mathf.Clamp(newPosition.x, screenBounds.x * -1 + objectWidth, screenBounds.x - objectWidth);
@@ -38,15 +49,37 @@ public class WaterDrop : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-     
         if (collision.gameObject.GetComponent<Flower>())
         {
-            collision.gameObject.GetComponent<Flower>().Grow(); 
-            GameManager.Instance.AddPoint();
+            if (isToxic)
+            {
+                collision.gameObject.GetComponent<Flower>().Shrink();
+                GameManager.Instance.DeductPoint();
+            }
+            else
+            {
+                collision.gameObject.GetComponent<Flower>().Grow(); 
+                GameManager.Instance.AddPoint();
+            }
         }
-        WaterSpawner.Instance.SpawnWaterDrop();
+
+        if (collision.gameObject.GetComponent<Obstacle>() && isToxic)
+        {
+            Destroy(collision.gameObject);
+        }
+
         Instantiate(splashParticlePrefab, transform.position, transform.rotation, null);
-        SoundManager.Instance.PlayWaterDropSound();
+        WaterSpawner.Instance.DelaySpawnWaterDrop();
+
+        if (!isToxic && collision.gameObject.GetComponent<Flower>())
+        {
+            SoundManager.Instance.PlayWaterDropSound();
+        }
+        else
+        {
+            SoundManager.Instance.PlayExplosion15Sound();
+        }
+
         Destroy(gameObject);
     }
 }

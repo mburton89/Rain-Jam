@@ -40,6 +40,13 @@ public class GameManager : MonoBehaviour
         HUD.instance.UpdatePointsUI(points);
     }
 
+    public void DeductPoint()
+    {
+        points--;
+
+        HUD.instance.UpdatePointsUI(points);
+    }
+
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

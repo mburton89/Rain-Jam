@@ -287,6 +287,8 @@ MonoBehaviour:
   - {fileID: 7801234059731955849}
   - {fileID: 3585867621956458915}
   - {fileID: 606724886739637975}
+  speed: 25
+  isToxic: 0
 --- !u!50 &5417129151735417640
 Rigidbody2D:
   serializedVersion: 4
@@ -302,7 +304,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.66
+  m_GravityScale: 0.4
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2

@@ -10,8 +10,6 @@ public class MainMenu : MonoBehaviour
     public Button startButton;
     public TextMeshProUGUI Score;
 
-
-
     void Start()
     {
         startButton.onClick.AddListener(HandleStartButtonClicked);

@@ -10,4 +10,9 @@ public class Flower : MonoBehaviour
     {
         transform.localPosition += new Vector3(0, growthRate);
     }
+
+    public void Shrink()
+    {
+        transform.localPosition -= new Vector3(0, growthRate);
+    }
 }
